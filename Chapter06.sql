@@ -46,7 +46,7 @@ INSERT INTO empTbl VALUES('윤차장', '최정보', '정보부');
 INSERT INTO empTbl VALUES('이주임', '윤차장', '정보부');
 GO
 
-WITH empCTE(empName, mgrName, dept, level)
+WITH empCTE(empName, mgrName, dept, level)	-- 재귀 CTE절 예제
 AS
 (
 	SELECT emp, manager, department, 0
@@ -59,5 +59,3 @@ AS
 )
 SELECT replicate(' ㄴ', level) + empName AS [직원이름], dept [직원부서]
 FROM empCTE ORDER BY dept, level;
-
-EXECUTE sp_tables [@table_type = 'table'];
